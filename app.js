@@ -1,7 +1,7 @@
-var createError = require("http-errors");
-var express = require("express");
+let createError = require("http-errors");
+let express = require("express");
 const router = express.Router();
-var app = express();
+let app = express();
 
 const routes = require("./routes");
 
