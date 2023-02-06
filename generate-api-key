@@ -17,5 +17,4 @@ const DAY_EXPIRED = 3653; // 10 Years
         }
     );
     console.log("API KEY=========", token);
-    console.log();
 })();

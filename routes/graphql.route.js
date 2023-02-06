@@ -2,7 +2,9 @@ const express = require("express");
 const router = express.Router();
 const { buildSchema } = require("graphql");
 const graphqlHTTP = require("express-graphql");
-const { Movie, Actor, Author } = require("../models");
+const { Movie } = require("../models/movie.model");
+const { Actor } = require("../models/actor.model");
+const { Author } = require("../models/author.model");
 
 const schema = buildSchema(`
   type Query {

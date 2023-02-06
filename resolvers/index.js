@@ -7,8 +7,12 @@ const {
   GraphQLList,
   GraphQLNonNull,
 } = require("graphql");
-const { Movie, Actor, Author } = require("../models");
-const { movieType, actorType, authorType } = require("../schema");
+const { Actor } = require("../models/actor.model");
+const { Author } = require("../models/author.model");
+const { Movie } = require("../models/movie.model");
+const { actorType } = require("../schema/actor.schema");
+const { authorType } = require("../schema/author.schema");
+const { movieType } = require("../schema/movie.schema");
 
 const queryType = new GraphQLObjectType({
   name: "QueryType",
@@ -20,7 +24,7 @@ const queryType = new GraphQLObjectType({
       args: {
         id: {
           type: new GraphQLNonNull(GraphQLID),
-          description: "ID of movies",
+          description: "ID of movie",
         },
       },
       resolve: async (_, args) => {
