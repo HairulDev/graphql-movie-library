@@ -31,18 +31,17 @@ const queryType = new GraphQLObjectType({
     movies: {
       type: new GraphQLList(movieType),
       resolve: async () => {
-        const movies = await Movie.findAll();
-
-        for (let i = 0; i < movies.length; i++) {
-          const actors = await Actor.findAll();
-          movies[i].actors = await actors.filter(
-            (res) => res.mov_id === movies[i].id
-          );
-          const authors = await Author.findAll();
-          movies[i].authors = await authors.filter(
-            (res) => res.mov_id === movies[i].id
-          );
-        }
+        const movies = await Movie.findAll(
+          {
+            include: [{
+              model: Actor,
+              as: 'actors'
+            }, {
+              model: Author,
+              as: 'authors'
+            }]
+          }
+        );
         return movies;
       },
     },

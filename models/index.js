@@ -35,15 +35,8 @@ const Author = sequelize.define("authors", {
   },
 });
 
-// Movie.hasMany(Actor);
-// Actor.belongsTo(Movie);
-Movie.hasMany(Actor, {
-  foreignKey: "mov_id",
-});
-
-Actor.belongsTo(Movie, {
-  foreignKey: "mov_id",
-});
+Movie.hasMany(Actor, { as: 'actors', foreignKey: 'mov_id', targetKey: 'id' });
+Movie.hasMany(Author, { as: 'authors', foreignKey: 'mov_id', targetKey: 'id' });
 
 module.exports = {
   Movie,
